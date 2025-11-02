@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>فراموشی رمز عبور | مرکز دانلود بازی‌های ویدیویی</title>
+<style>
+:root {
+  --primary-color: rgb(139 208 239);
+  --accent-color: #0366d6;
+  --bg-color: rgb(139 208 239);
+  --card-bg: rgb(0 53 70);
+  --border-color: #ddd;
+  --error-color: #c53030;
+  font-family: Vazirmatn, sans-serif;
+}
+body {
+  background: var(--bg-color);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.box {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  width: 380px;
+  max-width: 95%;
+}
+h1 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+label {
+  font-size: 0.95rem;
+  margin-bottom: 0.25rem;
+  color: rgb(139 208 239);
+}
+input[type="email"] {
+  padding: 0.7rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background: rgb(223 227 231);
+}
+button {
+  padding: 0.8rem;
+  border: none;
+  border-radius: 8px;
+  background: var(--primary-color);
+  color: rgb(0 53 70);
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+.small {
+  font-size: 0.9rem;
+  text-align: center;
+  margin-top: 0.5rem;
+  color: rgb(139 208 239);
+}
+
+.error {
+  color: var(--error-color);
+  font-size: 0.85rem;
+}
+</style>
+</head>
+<body>
+<main class="box" role="main" aria-labelledby="forgot-title">
+  <h1 id="forgot-title">فراموشی رمز عبور</h1>
+  <p class="small">ایمیل خود را وارد کنید تا لینک یا کد بازیابی رمز برای شما ارسال شود.</p>
+  <form action="/auth/forgot-password" method="post" id="forgotForm" novalidate>
+    <div>
+      <label for="email">ایمیل</label>
+      <input id="email" name="email" type="email" required autocomplete="email">
+      <div class="error" id="emailError" aria-live="polite"></div>
+    </div>
+    <button type="submit">ارسال لینک بازیابی</button>
+  </form>
+  <p class="small"><a href="login.html">بازگشت به ورود</a></p>
+</main>
+
+<script>
+document.getElementById('forgotForm').addEventListener('submit', function(e){
+  const email = document.getElementById('email');
+  document.getElementById('emailError').textContent = '';
+  if(!email.value.includes('@')){
+    document.getElementById('emailError').textContent = 'ایمیل نامعتبر است';
+    e.preventDefault();
+  }
+});
+</script>
+</body>
+</html>
