@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>سبد خرید | GameHub</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+
+<header class="header">
+    <nav class="nav-bar">
+        <a href="index.html" class="logo">
+            <img src="../../assets/images/logo.png" class="logo-img" alt="GameHub Logo">
+        </a>
+
+        <a href="index.html">خانه</a>
+        <a href="games.html">بازی‌ها</a>
+
+        <!-- Cart Icon + Badge -->
+        <div style="position: relative;">
+            <span style="font-size: 22px;">🛒</span>
+            <span id="cartBadge" class="badge large"
+                  style="position:absolute; top:-6px; right:-10px;">
+                0
+            </span>
+        </div>
+    </nav>
+</header>
+
+<main class="container">
+    <h1>افزودن به سبد خرید</h1>
+
+    <button class="m3-btn filled medium" onclick="addToCart()">
+        افزودن بازی ۱
+    </button>
+
+    <button class="m3-btn tonal medium" onclick="addToCart()">
+        افزودن بازی ۲
+    </button>
+</main>
+
+<script>
+    let cartCount = 0;
+
+    function addToCart() {
+        cartCount++;
+        document.getElementById("cartBadge").textContent = cartCount;
+    }
+</script>
+
+</body>
+</html>
