@@ -69,5 +69,48 @@
   <p class="small">قبلا ثبت‌نام کرده‌اید؟ <a href="login.html">ورود</a></p>
 </main>
 
+<script src="../../assets/js/form-validation.js"></script>
+<script>
+    document.getElementById("registerForm").addEventListener("submit", function (e) {
+        let isValid = true;
+
+        const fullname = document.getElementById("fullname");
+        const email = document.getElementById("email");
+        const password = document.getElementById("password");
+        const password2 = document.getElementById("password2");
+
+        // پاک‌سازی خطاها
+        [fullname, email, password, password2].forEach(clearError);
+
+        // نام و نام خانوادگی (حداقل ۳ کاراکتر)
+        if (fullname.value.trim().length < 3) {
+            showError(fullname, "نام و نام خانوادگی باید حداقل ۳ کاراکتر باشد");
+            isValid = false;
+        }
+
+        // ایمیل
+        if (!isValidEmail(email.value)) {
+            showError(email, "ایمیل وارد شده معتبر نیست");
+            isValid = false;
+        }
+
+        // رمز عبور
+        if (password.value.length < 8) {
+            showError(password, "رمز عبور باید حداقل ۸ کاراکتر باشد");
+            isValid = false;
+        }
+
+        // تکرار رمز عبور
+        if (password.value !== password2.value) {
+            showError(password2, "رمز عبور و تکرار آن یکسان نیست");
+            isValid = false;
+        }
+
+        if (!isValid) {
+            e.preventDefault();
+        }
+    });
+</script>
+
 </body>
 </html>

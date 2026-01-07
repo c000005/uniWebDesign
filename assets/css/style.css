@@ -878,3 +878,21 @@ m3-fab {
     opacity: 0.38;
     cursor: default;
 }
+
+/* =========================
+   Form Validation Errors
+========================= */
+
+.error {
+    font-size: 0.8rem;
+    margin-top: 4px;
+    color: var(--md-sys-color-error);
+    min-height: 16px;
+}
+
+input.invalid,
+textarea.invalid,
+select.invalid {
+    border-color: var(--md-sys-color-error);
+    box-shadow: 0 0 0 1px var(--md-sys-color-error);
+}

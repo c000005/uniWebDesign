@@ -37,5 +37,18 @@
   <p class="small"><a href="login.html">بازگشت به ورود</a></p>
 </main>
 
+<script src="../../assets/js/form-validation.js"></script>
+<script>
+    document.getElementById("forgotForm").addEventListener("submit", function (e) {
+        const email = document.getElementById("email");
+        clearError(email);
+
+        if (!isValidEmail(email.value)) {
+            showError(email, "ایمیل وارد شده معتبر نیست");
+            e.preventDefault();
+        }
+    });
+</script>
+
 </body>
 </html>

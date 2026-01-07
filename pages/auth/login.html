@@ -48,5 +48,30 @@
   <p class="small">حساب ندارید؟ <a href="register.html">ثبت‌نام</a></p>
 </main>
 
+<script src="../../assets/js/form-validation.js"></script>
+<script>
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+        let isValid = true;
+
+        const email = document.getElementById("email");
+        const password = document.getElementById("password");
+
+        clearError(email);
+        clearError(password);
+
+        if (!isValidEmail(email.value)) {
+            showError(email, "ایمیل معتبر وارد کنید");
+            isValid = false;
+        }
+
+        if (password.value.length < 8) {
+            showError(password, "رمز عبور حداقل ۸ کاراکتر است");
+            isValid = false;
+        }
+
+        if (!isValid) e.preventDefault();
+    });
+</script>
+
 </body>
 </html>
